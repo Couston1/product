@@ -1,0 +1,265 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    width: 100%;
+    height: 100vh;
+    background-color: #ccc;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.container{
+    width: 23.438rem;
+    height: 32.5rem;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.06);
+    padding: 1.3rem;
+    overflow-y: scroll;
+}
+.container::-webkit-scrollbar,
+.container-box::-webkit-scrollbar{
+    display: none;
+}
+/* form search bar starts */
+.container form{
+    width: 100%;
+    border: 1px solid rgba(0,0,0, 0.3);
+    box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.06);
+    border-radius: .5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.container form input{
+    border: none;
+    outline: none;
+    box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.06);
+    box-shadow: none;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: 600;
+    padding: .5rem .8rem;
+}
+.container form button{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding-right: 0.625rem;
+    cursor: pointer;
+}
+/* form search bar ends */
+
+/* product list section starts */
+.product-list{
+    padding: 1.25rem 0;
+}
+.product-list .product{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+.product-list .product img{
+    width: 4.375rem;
+    height: 4.375rem;
+    object-fit: contain;
+    border-radius: .5rem;
+}
+.product-list .product .produt-details{
+    padding-left: 0.938rem;
+}
+.product-list .product .produt-details h2{
+    font-size: 1.2rem;
+    color: #222;
+}
+.product-list .product .produt-details h3{
+    font-size: 1rem;
+    color: #888;
+}
+/* product list section ends */
+
+
+/* adding product section starts */
+.add-product form{
+    background-color: #fff;
+    margin: 0 auto;
+    max-width: 50rem;
+    border-radius: .5rem;
+    padding: 2rem;
+    box-shadow: 4px 4px 30px rgba(0, 0, 0, 0.06);
+}
+h2{
+    font-size: 1.6rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    color: blueviolet;
+}
+.add-product form .image{
+    height: 10rem;
+    width: 10rem;
+    margin: 0 auto;
+    object-fit: cover;
+}
+.add-product form .image img{
+    width: 100%;
+}
+.add-product form .input-group{
+    flex: 1 1 30rem;
+    margin-top: .8rem;
+    position: relative;
+}
+.add-product form .input-group input{
+    border: 1px solid rgba(0,0,0);
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.03);
+    padding: .7rem;
+    width: 100%;
+    font-size: 1.2rem;
+    color: var(--black);
+    border-radius: .5rem;
+}
+.add-product form .input-group span{
+    color: red;
+    font-size: 1rem;
+}
+.add-product form button{
+    width: 100%;
+    padding: .5rem 0;
+    margin: 1rem 0;
+    border-radius: .5rem;
+    outline: none;
+    border: none;
+    font-size: 1.3rem;
+    background-color: tomato;
+    cursor: pointer;
+}
+/* adding product section ends */
+
+/* alert message ends */
+.notifications{
+    position: fixed;
+    top: 30px;
+    right: 20px;
+}
+.notifications :where(.toast, .column){
+    display: flex;
+    align-items: center;
+}
+.notifications .toast{
+    width: 400px;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    border-radius: 4px;
+    padding: 16px 17px;
+    margin-bottom: 10px;
+    background-color: #fff;
+    justify-content: space-between;
+    animation: show_toast 0.3s ease forwards;
+}
+@keyframes show_toast {
+    0%{
+        transform: translateX(100%);
+    }
+    40%{
+        transform: translateX(-5%);
+    }
+    80%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(-10px);
+    }
+}
+.notifications .toast.hide{
+    animation: hide_toast 0.5s ease forwards;
+}
+@keyframes hide_toast {
+    0%{
+        transform: translateX(-10px);
+    }
+    40%{
+        transform: translateX(0%);
+    }
+    80%{
+        transform: translateX(-5%);
+    }
+    100%{
+        transform: translateX(calc(100% + 20px));
+    }
+}
+
+.notifications .toast::before{
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    animation: progress 5s linear forwards;
+}
+@keyframes progress {
+    100%{
+        width: 0%;
+    }
+}
+
+.notifications .toast.success::before{
+    background-color: #0abf30;
+}
+.notifications .toast.error::before{
+    background-color:#e24d4c;
+}
+.notifications .toast.warning::before{
+    background-color: #e9bd0c;
+}
+.notifications .toast.info::before{
+    background-color: #3498d8;
+}
+.notifications .toast i{
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+.notifications .toast i:last-child{
+    color: #aeb0d7;  
+}
+.notifications .toast i:last-child:hover{
+    color: #e24d4c;
+}
+.notifications .toast span{
+    margin-left: 12px;
+    font-size: 1.07rem;
+}
+.notifications .toast.success .column i{
+    color: #0abf30;
+}
+.notifications .toast.error .column i{
+    color: #e24d4c;
+}
+.notifications .toast.warning .column i{
+    color: #e9bd0c;
+}
+.notifications .toast.info .column i{
+    color:#3498d8;
+}
+.btns .btn{
+    border: none;
+    outline: none;
+    color: #fff;
+    background-color: tomato;
+    cursor: pointer;
+    width: 100%;
+    padding: .5rem 0;
+    margin: 1rem 0;
+    border-radius: .5rem;
+}
+/* alert message ends */
+
